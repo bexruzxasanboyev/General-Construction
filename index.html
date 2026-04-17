@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>General Construction</title>
     <style>
-     * { margin: 0; padding: 0; box-sizing: border-box; } html, body { overflow-x: hidden; } body { font-family: Montserrat, sans-serif; } .hero { padding-top: 16px; padding-bottom: 32px; } .hero__container { max-width: 385px; margin: 0 auto; padding: 0 10px; position: relative; } .hero__box { position: relative; } .hero__box::before { content: ''; position: absolute; top: 0; bottom: 54px; left: -10px; right: -10px; background-image: url(./images/bg.avif); background-repeat: no-repeat; background-size: cover; background-position: center; z-index: -1; pointer-events: none; } .hero__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; } .hero__logo { max-width: 125px; width: 100%; height: auto; } .hero__phone { display: flex; align-items: center; gap: 2px; text-decoration: none; } .hero__phone-number { font-weight: 500; font-size: 16px; line-height: 114%; text-align: center; text-transform: uppercase; color: black; } .hero__title { font-weight: 800; font-size: clamp(23px, 7.3vw, 28px); line-height: 120%; letter-spacing: -2%; text-align: center; text-transform: uppercase; margin-bottom: 16px; } .hero__info { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; } .hero__info-item { display: flex; align-items: center; gap: 8px; padding: 5px 0 5px 8px; background-color: #1B2E4A; border-radius: 5px; max-width: 333px; width: 100%; backdrop-filter: blur(10px); } .hero__info-icon { object-fit: cover; flex-shrink: 0; } .hero__info-text { font-family: Montserrat, sans-serif; font-weight: 400; font-size: 14px; line-height: 120%; color: white; } .hero__arrow { height: auto; width: 33px; margin: 0 auto; display: flex; margin-bottom: 5px; } .hero__image { max-width: none; width: calc(100% + 20px); height: auto; margin-left: -10px; margin-right: -10px; margin-top: -50px; margin-bottom: -38px; object-fit: cover; display: block; } .hero__btn { max-width: 330px; width: 100%; border: 1.52px solid #FFE7AB; box-shadow: 0px 3.05px 0px 0px #977843; border-radius: 15px; padding: 36px 0; background: linear-gradient(90deg, #FFCD7D 0%, #FFDDA5 54.33%, #FFCD7D 100%); margin: 0 auto; display: flex; align-items: center; position: relative; z-index: 2; cursor: pointer; justify-content: center; color: #664A0B; font-family: Montserrat, sans-serif; font-weight: 700; margin-bottom: 34px; font-size: 18px; line-height: 100%; letter-spacing: 2%; text-align: center; text-transform: uppercase; } .gallery { display: flex; flex-direction: column; align-items: center; } .gallery__title { font-weight: 700; font-size: 28px; line-height: 100%; text-align: center; text-transform: uppercase; margin-bottom: 16px; } .gallery__viewport { position: relative; width: 100%; max-width: 355px; overflow: hidden; border-radius: 12px; } .gallery__grid { display: flex; transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.3, 1); will-change: transform; touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; } .gallery__grid:active { cursor: grabbing; } .gallery__image { flex: 0 0 100%; width: 100%; height: auto; display: block; object-fit: cover; pointer-events: none; -webkit-user-drag: none; } .gallery__dots { position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%); display: flex; gap: 6px; z-index: 2; } .gallery__dot { width: 7px !important; height: 7px !important; border-radius: 50%; background: #FFFFFF80; border: none; padding: 0; cursor: pointer; transition: background 0.2s ease; } .gallery__dot.is-active { background: white; } .gallery__nav { display: flex; gap: 16px; margin-top: 16px; } .gallery__nav-btn { width: 72px; height: 48px; border: 1.52px solid #FFE7AB; box-shadow: 0px 3.05px 0px 0px #977843; border-radius: 12px; background: linear-gradient(90deg, #FFCD7D 0%, #FFDDA5 54.33%, #FFCD7D 100%); display: flex; align-items: center; justify-content: center; cursor: pointer; } .gallery__nav-btn:active { transform: translateY(2px); box-shadow: 0px 1px 0px 0px #977843; } .apply { padding: 24px 0 32px; } .apply__container { max-width: 385px; margin: 0 auto; padding: 0 10px; } .apply__card { background: linear-gradient(180deg, #0E4364 0%, #1B2E4A 100%); border-radius: 20px; padding: 24px 20px 20px; } .apply__title { font-weight: 700; font-size: 28px; line-height: 120%; text-align: center; text-transform: uppercase; color: #fff; margin-bottom: 7px; letter-spacing: -2%; } .apply__desc { font-weight: 500; font-size: clamp(13px, 4.3vw, 14px); line-height: 135%; text-align: center; color: white; margin-bottom: 16px; } .apply__desc b { font-weight: 700; } .apply__form { display: flex; flex-direction: column; gap: 14px; } .apply__row { display: flex; flex-direction: column; gap: 6px; } .apply__label { font-weight: 400; font-size: 14px; line-height: 120%; color: #fff; } .apply__label span { color: #FFCD7D; } .apply__input { width: 100%; height: 48px; padding: 0 16px; border: none; border-radius: 10px; background: #fff; font-family: Montserrat, sans-serif; font-size: 14px; color: #1B2E4A; outline: none; } .apply__input::placeholder { color: #9C9C9C; } .apply__select { position: relative; } .apply__select::after { content: ''; position: absolute; right: 18px; top: 50%; width: 12px; height: 8px; transform: translateY(-50%); background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1.5l5 5 5-5' stroke='%231B2E4A' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center / contain; pointer-events: none; } .apply__select .apply__input { appearance: none; -webkit-appearance: none; -moz-appearance: none; padding-right: 40px; cursor: pointer; } .apply__phone { position: relative; display: flex; align-items: center; height: 48px; background: #fff; border-radius: 10px; padding: 0 10px; gap: 6px; } .apply__country { display: inline-flex; align-items: center; gap: 4px; background: transparent; border: none; padding: 0; cursor: pointer; font-family: Montserrat, sans-serif; flex-shrink: 0; } .apply__flag { font-size: 20px; line-height: 1; display: inline-flex; align-items: center; justify-content: center; } .apply__caret { flex-shrink: 0; opacity: 0.7; } .apply__code { font-weight: 600; font-size: 14px; color: #1B2E4A; margin-right: 2px; } .apply__phone-input { flex: 1; min-width: 0; height: 100%; padding: 0 4px; border: none; background: transparent; outline: none; font-family: Montserrat, sans-serif; font-size: 14px; color: #1B2E4A; } .apply__phone-input::placeholder { color: #9C9C9C; } .apply__dropdown { position: absolute; top: calc(100% + 4px); left: 0; right: 0; max-height: 240px; overflow-y: auto; background: #fff; border-radius: 10px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); z-index: 10; } .apply__dropdown .country-option { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; font-size: 14px; color: #1B2E4A; cursor: pointer; border-bottom: 1px solid #F0F0F0; } .apply__dropdown .country-option:last-child { border-bottom: none; } .apply__dropdown .country-option:hover, .apply__dropdown .country-option.selected { background: #F5F7FA; } .apply__dropdown .country-code { color: #6A7A90; font-weight: 500; } .apply__error { font-size: 12px; color: #FF8A8A; margin-top: 4px; } .apply__btn { width: 100%; border: 1.52px solid #FFE7AB; box-shadow: 0px 3.05px 0px 0px #977843; border-radius: 15px; padding: 22px 0; background: linear-gradient(90deg, #FFCD7D 0%, #FFDDA5 54.33%, #FFCD7D 100%); color: #664A0B; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 18px; line-height: 100%; letter-spacing: 2%; text-transform: uppercase; cursor: pointer; margin-top: 6px; } .apply__btn:active { transform: translateY(2px); box-shadow: 0px 1px 0px 0px #977843; } .contact { padding-bottom: 32px; } .contact__row { display: flex; align-items: center; justify-content: center; gap: 5px; margin-bottom: 8px; } .contact__col { display: flex; align-items: center; gap: 8px; background-color: #1B2E4A; border-radius: 8px; max-width: 175px; width: 100%; backdrop-filter: blur(10px); padding: 8px; color: white; } .contact__col-imgs { background-color: #9C6C2C; width: 31px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 7px; } .contact__col-img { width: 15px; height: 15px; } .contact__item p { font-weight: 300; font-size: 11px; line-height: 100%; margin-bottom: 4px; } .contact__item h3 { font-weight: 400; font-size: 14px; white-space: nowrap; line-height: 100%; } .mapes { margin-top: 16px; overflow: hidden; margin: 0 auto; display: flex; align-items: center; justify-content: center; position: relative; } .mapes__link { display: block; max-width: 355px; width: 100%; line-height: 0; border-radius: 20px; overflow: hidden; } .mapes__frame { width: 100%; height: 220px; border: 0; display: block; pointer-events: auto; border-radius: 20px; } .contact__text { font-weight: 400; text-align: center; padding-top: 8px; font-style: Italic; font-size: 16px; line-height: 100%; } .footer { padding-top: 16px; padding-bottom: 31.5px; background: linear-gradient(180deg, #0E4364 0%, #1B2E4A 100%); } .footer__logo {} .footer__text { font-weight: 400; font-size: 14px; line-height: 135%; color: white; padding-top: 9px; padding-bottom: 9.5px; } .footer__arrow { margin-left: 22px; } .footer__images { max-width: 349px; width: 100%; height: auto; position: absolute; bottom: -30px; right: -40px; } @media (max-width:350px) { .contact__row { transform: scale(0.9); } .footer__arrow { margin-left: 0; } }
+     * { margin: 0; padding: 0; box-sizing: border-box; } html, body { overflow-x: hidden; } body { font-family: Montserrat, sans-serif; } .hero { padding-top: 16px; padding-bottom: 32px; } .hero__container { max-width: 385px; margin: 0 auto; padding: 0 10px; position: relative; } .hero__box { position: relative; } .hero__box::before { content: ''; position: absolute; top: 0; bottom: 54px; left: -10px; right: -10px; background-image: url(./images/bg.avif); background-repeat: no-repeat; background-size: cover; background-position: center; z-index: -1; pointer-events: none; } .hero__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; } .hero__logo { max-width: 125px; width: 100%; height: auto; } .hero__phone { display: flex; align-items: center; gap: 2px; text-decoration: none; } .hero__phone-number { font-weight: 500; font-size: 16px; line-height: 114%; text-align: center; text-transform: uppercase; color: black; } .hero__title { font-weight: 800; font-size: clamp(23px, 7.3vw, 28px); line-height: 120%; letter-spacing: -2%; text-align: center; text-transform: uppercase; margin-bottom: 16px; } .hero__info { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; } .hero__info-item { display: flex; align-items: center; gap: 8px; padding: 5px 0 5px 8px; background-color: #1B2E4A; border-radius: 5px; max-width: 333px; width: 100%; backdrop-filter: blur(10px); } .hero__info-icon { object-fit: cover; flex-shrink: 0; } .hero__info-text { font-family: Montserrat, sans-serif; font-weight: 400; font-size: 14px; line-height: 120%; color: white; } .hero__arrow { height: auto; width: 33px; margin: 0 auto; display: flex; margin-bottom: 5px; } .hero__image-wrap { position: relative; width: calc(100% + 20px); margin-left: -10px; margin-right: -10px; margin-top: -50px; margin-bottom: -38px; overflow: hidden; } .hero__image-wrap::after { content: ''; position: absolute; left: -10%; right: -10%; bottom: -5%; height: 70%; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); background: radial-gradient(ellipse 55% 55% at 20% 95%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 70%), radial-gradient(ellipse 50% 50% at 75% 100%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 70%), radial-gradient(ellipse 40% 40% at 50% 80%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 75%), radial-gradient(ellipse 35% 35% at 90% 75%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%), radial-gradient(ellipse 30% 30% at 10% 70%, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0) 70%), linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 55%, #ffffff 100%); filter: blur(8px); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 40%, black 70%); mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 40%, black 70%); pointer-events: none; } .hero__image { max-width: none; width: 100%; height: auto; object-fit: cover; display: block; } .hero__btn { max-width: 330px; width: 100%; border: 1.52px solid #FFE7AB; box-shadow: 0px 3.05px 0px 0px #977843; border-radius: 15px; padding: 36px 0; background: linear-gradient(90deg, #FFCD7D 0%, #FFDDA5 54.33%, #FFCD7D 100%); margin: 0 auto; display: flex; align-items: center; position: relative; z-index: 2; cursor: pointer; justify-content: center; color: #664A0B; font-family: Montserrat, sans-serif; font-weight: 700; margin-bottom: 34px; font-size: 18px; line-height: 100%; letter-spacing: 2%; text-align: center; text-transform: uppercase; }
     </style>
     <link rel="stylesheet" href="./css/main.css" media="print" onload="this.media='all'" />
     <noscript>
@@ -15,212 +15,219 @@
 </head>
 
 <body>
-    <section class="hero">
-        <div class="hero__container">
-            <div class="hero__box">
-                <div class="hero__header">
-                    <img class="hero__logo" src="./images/logo.avif" loading="lazy" decoding="async" width="125"
-                        height="24" alt="logo">
+    <main>
+        <section class="hero">
+            <div class="hero__container">
+                <div class="hero__box">
+                    <div class="hero__header">
+                        <img class="hero__logo" src="./images/logo.avif" loading="lazy" decoding="async" width="125"
+                            height="24" alt="logo">
 
-                    <a class="hero__phone" href="tel:+998785555514">
-                        <img class="hero__phone-icon" src="./images/tel.png" loading="lazy" decoding="async" width="12"
-                            height="12" alt="tel">
-                        <p class="hero__phone-number">+998 78 555 55 14</p>
+                        <a class="hero__phone" href="tel:+998785555514">
+                            <img class="hero__phone-icon" src="./images/tel.png" loading="lazy" decoding="async"
+                                width="12" height="12" alt="tel">
+                            <p class="hero__phone-number">+998 78 555 55 14</p>
+                        </a>
+                    </div>
+
+                    <h1 class="hero__title">Toshkent shahridan <br> Biznes klassdagi <br> xonadonlar</h1>
+
+                    <div class="hero__info">
+                        <div class="hero__info-item">
+                            <img class="hero__info-icon" src="./images/home.png" loading="lazy" decoding="async"
+                                width="22" height="22" alt="home">
+                            <p class="hero__info-text"><b>Boshlang'ich to'lov:</b> 120.000.000 <br> so'mdan boshlab</p>
+                        </div>
+                        <div class="hero__info-item" style="max-width: 295px; width: 100%;">
+                            <img class="hero__info-icon" src="./images/calendar.png" loading="lazy" decoding="async"
+                                width="22" height="22" alt="home">
+                            <p class="hero__info-text"><b>Qolgan to'lov muddati:</b> 18 oygacha</p>
+                        </div>
+                    </div>
+
+                    <img class="hero__arrow" src="./images/arrow.png" loading="lazy" decoding="async" width="53"
+                        height="28" alt="arrow">
+                    <div class="hero__image-wrap">
+                        <img class="hero__image" src="./images/mainImg.avif" loading="lazy" decoding="async" width="498"
+                            height="306" alt="bg">
+                    </div>
+
+                    <button class="hero__btn webinar-cta">Menejer bilan bog’lanish</button>
+                </div>
+
+
+                <div class="gallery">
+                    <h2 class="gallery__title">Majmua rasmlari</h2>
+
+                    <div class="gallery__viewport">
+                        <div class="gallery__grid">
+                            <img class="gallery__image" src="./images/buldImg/1.avif" loading="lazy" decoding="async"
+                                width="355" height="221" alt="buldImg">
+                            <img class="gallery__image" src="./images/buldImg/2.avif" loading="lazy" decoding="async"
+                                width="355" height="221" alt="buldImg">
+                            <img class="gallery__image" src="./images/buldImg/3.avif" loading="lazy" decoding="async"
+                                width="355" height="221" alt="buldImg">
+                            <img class="gallery__image" src="./images/buldImg/4.avif" loading="lazy" decoding="async"
+                                width="355" height="221" alt="buldImg">
+                            <img class="gallery__image" src="./images/buldImg/5.avif" loading="lazy" decoding="async"
+                                width="355" height="221" alt="buldImg">
+                            <img class="gallery__image" src="./images/buldImg/6.avif" loading="lazy" decoding="async"
+                                width="355" height="221" alt="buldImg">
+                            <img class="gallery__image" src="./images/buldImg/7.avif" loading="lazy" decoding="async"
+                                width="355" height="221" alt="buldImg">
+                        </div>
+                        <div class="gallery__dots"></div>
+                    </div>
+
+                    <div class="gallery__nav">
+                        <button class="gallery__nav-btn gallery__nav-btn--prev" type="button" aria-label="prev">
+                            <svg width="23" height="8" viewBox="0 0 23 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M0.146446 3.32845C-0.0488148 3.52371 -0.0488148 3.8403 0.146446 4.03556L3.32843 7.21754C3.52369 7.4128 3.84027 7.4128 4.03553 7.21754C4.2308 7.02228 4.2308 6.70569 4.03553 6.51043L1.20711 3.682L4.03553 0.853578C4.2308 0.658316 4.2308 0.341734 4.03553 0.146471C3.84027 -0.0487909 3.52369 -0.0487909 3.32843 0.146471L0.146446 3.32845ZM22.5 3.68201L22.5 3.18201L0.5 3.182L0.5 3.682L0.5 4.182L22.5 4.18201L22.5 3.68201Z"
+                                    fill="#6A4E0D" />
+                            </svg>
+                        </button>
+                        <button class="gallery__nav-btn gallery__nav-btn--next" type="button" aria-label="next">
+                            <svg width="23" height="8" viewBox="0 0 23 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M22.3536 4.03556C22.5488 3.8403 22.5488 3.52372 22.3536 3.32846L19.1716 0.146475C18.9763 -0.0487876 18.6597 -0.0487876 18.4645 0.146475C18.2692 0.341737 18.2692 0.658319 18.4645 0.853581L21.2929 3.68201L18.4645 6.51044C18.2692 6.7057 18.2692 7.02228 18.4645 7.21754C18.6597 7.4128 18.9763 7.4128 19.1716 7.21754L22.3536 4.03556ZM0 3.68201L-4.37114e-08 4.18201L22 4.18201L22 3.68201L22 3.18201L4.37114e-08 3.18201L0 3.68201Z"
+                                    fill="#6A4E0D" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="apply">
+            <div class="apply__container">
+                <div class="apply__card">
+                    <h3 class="apply__title">Ariza qoldiring</h3>
+                    <p class="apply__desc">Siz uchun <b>Toshkent, Yunusobod tumani markazidan</b> 100% g'ishtdan
+                        qurilayotgan biznes klass xonadonlarni taklif qilamiz!</p>
+
+                    <form class="apply__form" id="applyForm">
+                        <div class="apply__row">
+                            <label class="apply__label" for="applyType">Qanday xonadon qidiryapsiz*</label>
+                            <div class="apply__select">
+                                <select id="applyType" class="apply__input" name="type">
+                                    <option value="" disabled selected hidden>Yashash uchun</option>
+                                    <option>Yashash uchun</option>
+                                    <option>Investitsiya uchun</option>
+                                    <option>Ijara uchun</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="apply__row">
+                            <label class="apply__label" for="applyRooms">Necha xonalik bo'lsin*</label>
+                            <div class="apply__select">
+                                <select id="applyRooms" class="apply__input" name="rooms">
+                                    <option value="" disabled selected hidden>2 xona</option>
+                                    <option>1 xona</option>
+                                    <option>2 xona</option>
+                                    <option>3 xona</option>
+                                    <option>4 xona</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="apply__row">
+                            <label class="apply__label" for="applyAddress">Xozirgi yashash manzilingiz</label>
+                            <input id="applyAddress" class="apply__input" type="text" name="address"
+                                placeholder="Misol: Toshkent shahri, C1" autocomplete="street-address">
+                        </div>
+
+                        <div class="apply__row">
+                            <label class="apply__label" for="applyName">Ismingiz <span>*</span></label>
+                            <input id="applyName" class="apply__input" type="text" name="name"
+                                placeholder="Misol: Muxlisa" autocomplete="name">
+                        </div>
+
+                        <div class="apply__row">
+                            <label class="apply__label" for="applyPhone">Telefon raqamingiz <span>*</span></label>
+                            <div class="apply__phone">
+                                <button type="button" class="apply__country" id="applyCountry">
+                                    <span class="apply__flag" id="applyFlag">🇺🇿</span>
+                                    <svg class="apply__caret" id="applyCaret" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="#1B2E4A" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" aria-hidden="true">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                    <span class="apply__code" id="applyCode">+998</span>
+                                </button>
+                                <div class="apply__dropdown" id="applyDropdown" style="display:none"></div>
+                                <input id="applyPhone" class="apply__phone-input" type="tel" name="phone"
+                                    inputmode="numeric" placeholder="(00) 000-00-00" autocomplete="tel">
+                            </div>
+                            <p class="apply__error" id="applyPhoneError" style="display:none">❌ Telefon raqam mos emas!
+                            </p>
+                        </div>
+
+                        <button type="submit" class="apply__btn">Yuborish</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="contact">
+            <div class="hero__container">
+                <h2 class="gallery__title">kontaktlar</h2>
+
+                <div class="contact__row">
+                    <div class="contact__col">
+                        <div class="contact__col-imgs">
+                            <img class="contact__col-img" src="./images/call.png" loading="lazy" decoding="async"
+                                width="15" height="15" alt="call">
+                        </div>
+                        <div class="contact__item">
+                            <p>Aloqa uchun:</p>
+                            <h3>+998 78 555 55 14</h3>
+                        </div>
+                    </div>
+                    <div class="contact__col">
+                        <img src="./images/telegram.png" loading="lazy" decoding="async" width="31" height="32"
+                            alt="telegram icon">
+                        <div class="contact__item">
+                            <p>Telegram:</p>
+                            <h3>@BibisoraAR</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mapes">
+                    <a class="mapes__link" href="https://yandex.ru/navi/org/12797818539?si=e98t6tvnwd25kuxbxvr0p9cx70"
+                        target="_blank" rel="noopener">
+                        <iframe class="mapes__frame" src="https://yandex.com/map-widget/v1/org/12797818539/"
+                            loading="lazy" allow="geolocation" title="Bizning manzilimiz Yandex Maps'da"></iframe>
                     </a>
                 </div>
-
-                <h1 class="hero__title">Toshkent shahridan <br> Biznes klassdagi <br> xonadonlar</h1>
-
-                <div class="hero__info">
-                    <div class="hero__info-item">
-                        <img class="hero__info-icon" src="./images/home.png" loading="lazy" decoding="async" width="22"
-                            height="22" alt="home">
-                        <p class="hero__info-text"><b>Boshlang'ich to'lov:</b> 120.000.000 <br> so'mdan boshlab</p>
-                    </div>
-                    <div class="hero__info-item" style="max-width: 295px; width: 100%;">
-                        <img class="hero__info-icon" src="./images/calendar.png" loading="lazy" decoding="async"
-                            width="22" height="22" alt="home">
-                        <p class="hero__info-text"><b>Qolgan to'lov muddati:</b> 18 oygacha</p>
-                    </div>
-                </div>
-
-                <img class="hero__arrow" src="./images/arrow.png" loading="lazy" decoding="async" width="53" height="28"
-                    alt="arrow">
-                <img class="hero__image" src="./images/mainImg.avif" loading="lazy" decoding="async" width="498"
-                    height="306" alt="bg">
-
-                <button class="hero__btn webinar-cta">Menejer bilan bog’lanish</button>
+                <p class="contact__text">Manzilimiz Yandex Maps da*</p>
             </div>
+        </section>
 
+        <section class="footer">
+            <div class="hero__container">
+                <img class="footer__logo" src="./images/logos.avif" loading="lazy" decoding="async" width="150"
+                    height="29" alt="logo">
+                <p class="footer__text">Hoziroq Ariza qoldiring <br>
+                    va <b>rad etib bo’lmaydigan</b> <br> imkoniyatlar bilan tanishing!</p>
+                <img class="footer__arrow" src="./images/arrows.png" loading="lazy" decoding="async" width="84"
+                    height="128" alt="arrows">
+                <button class="hero__btn webinar-cta"
+                    style="margin-bottom: 0; font-size: 18px; padding: 27px 0 27.5px 0; max-width: 300px; width: 100%;">Ariza
+                    qoldirish
+                </button>
 
-            <div class="gallery">
-                <h2 class="gallery__title">Majmua rasmlari</h2>
-
-                <div class="gallery__viewport">
-                    <div class="gallery__grid">
-                        <img class="gallery__image" src="./images/buldImg/1.png" loading="lazy" decoding="async"
-                            width="355" height="221" alt="buldImg">
-                        <img class="gallery__image" src="./images/buldImg/1.png" loading="lazy" decoding="async"
-                            width="355" height="221" alt="buldImg">
-                        <img class="gallery__image" src="./images/buldImg/1.png" loading="lazy" decoding="async"
-                            width="355" height="221" alt="buldImg">
-                        <img class="gallery__image" src="./images/buldImg/1.png" loading="lazy" decoding="async"
-                            width="355" height="221" alt="buldImg">
-                        <img class="gallery__image" src="./images/buldImg/1.png" loading="lazy" decoding="async"
-                            width="355" height="221" alt="buldImg">
-                        <img class="gallery__image" src="./images/buldImg/1.png" loading="lazy" decoding="async"
-                            width="355" height="221" alt="buldImg">
-                        <img class="gallery__image" src="./images/buldImg/1.png" loading="lazy" decoding="async"
-                            width="355" height="221" alt="buldImg">
-                    </div>
-                    <div class="gallery__dots"></div>
-                </div>
-
-                <div class="gallery__nav">
-                    <button class="gallery__nav-btn gallery__nav-btn--prev" type="button" aria-label="prev">
-                        <svg width="23" height="8" viewBox="0 0 23 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M0.146446 3.32845C-0.0488148 3.52371 -0.0488148 3.8403 0.146446 4.03556L3.32843 7.21754C3.52369 7.4128 3.84027 7.4128 4.03553 7.21754C4.2308 7.02228 4.2308 6.70569 4.03553 6.51043L1.20711 3.682L4.03553 0.853578C4.2308 0.658316 4.2308 0.341734 4.03553 0.146471C3.84027 -0.0487909 3.52369 -0.0487909 3.32843 0.146471L0.146446 3.32845ZM22.5 3.68201L22.5 3.18201L0.5 3.182L0.5 3.682L0.5 4.182L22.5 4.18201L22.5 3.68201Z"
-                                fill="#6A4E0D" />
-                        </svg>
-                    </button>
-                    <button class="gallery__nav-btn gallery__nav-btn--next" type="button" aria-label="next">
-                        <svg width="23" height="8" viewBox="0 0 23 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M22.3536 4.03556C22.5488 3.8403 22.5488 3.52372 22.3536 3.32846L19.1716 0.146475C18.9763 -0.0487876 18.6597 -0.0487876 18.4645 0.146475C18.2692 0.341737 18.2692 0.658319 18.4645 0.853581L21.2929 3.68201L18.4645 6.51044C18.2692 6.7057 18.2692 7.02228 18.4645 7.21754C18.6597 7.4128 18.9763 7.4128 19.1716 7.21754L22.3536 4.03556ZM0 3.68201L-4.37114e-08 4.18201L22 4.18201L22 3.68201L22 3.18201L4.37114e-08 3.18201L0 3.68201Z"
-                                fill="#6A4E0D" />
-                        </svg>
-                    </button>
-                </div>
+                <img class="footer__images" src="./images/homeBig.avif" loading="lazy" decoding="async" width="349"
+                    height="329" alt="homeBig">
             </div>
-        </div>
-    </section>
-
-
-    <section class="apply">
-        <div class="apply__container">
-            <div class="apply__card">
-                <h3 class="apply__title">Ariza qoldiring</h3>
-                <p class="apply__desc">Siz uchun <b>Toshkent, Yunusobod tumani markazidan</b> 100% g'ishtdan
-                    qurilayotgan biznes klass xonadonlarni taklif qilamiz!</p>
-
-                <form class="apply__form" id="applyForm">
-                    <div class="apply__row">
-                        <label class="apply__label" for="applyType">Qanday xonadon qidiryapsiz*</label>
-                        <div class="apply__select">
-                            <select id="applyType" class="apply__input" name="type">
-                                <option value="" disabled selected hidden>Yashash uchun</option>
-                                <option>Yashash uchun</option>
-                                <option>Investitsiya uchun</option>
-                                <option>Ijara uchun</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="apply__row">
-                        <label class="apply__label" for="applyRooms">Necha xonalik bo'lsin*</label>
-                        <div class="apply__select">
-                            <select id="applyRooms" class="apply__input" name="rooms">
-                                <option value="" disabled selected hidden>2 xona</option>
-                                <option>1 xona</option>
-                                <option>2 xona</option>
-                                <option>3 xona</option>
-                                <option>4 xona</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="apply__row">
-                        <label class="apply__label" for="applyAddress">Xozirgi yashash manzilingiz</label>
-                        <input id="applyAddress" class="apply__input" type="text" name="address"
-                            placeholder="Misol: Toshkent shahri, C1" autocomplete="street-address">
-                    </div>
-
-                    <div class="apply__row">
-                        <label class="apply__label" for="applyName">Ismingiz <span>*</span></label>
-                        <input id="applyName" class="apply__input" type="text" name="name" placeholder="Misol: Muxlisa"
-                            autocomplete="name">
-                    </div>
-
-                    <div class="apply__row">
-                        <label class="apply__label" for="applyPhone">Telefon raqamingiz <span>*</span></label>
-                        <div class="apply__phone">
-                            <button type="button" class="apply__country" id="applyCountry">
-                                <span class="apply__flag" id="applyFlag">🇺🇿</span>
-                                <svg class="apply__caret" id="applyCaret" width="14" height="14" viewBox="0 0 24 24"
-                                    fill="none" stroke="#1B2E4A" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" aria-hidden="true">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                                <span class="apply__code" id="applyCode">+998</span>
-                            </button>
-                            <div class="apply__dropdown" id="applyDropdown" style="display:none"></div>
-                            <input id="applyPhone" class="apply__phone-input" type="tel" name="phone"
-                                inputmode="numeric" placeholder="(00) 000-00-00" autocomplete="tel">
-                        </div>
-                        <p class="apply__error" id="applyPhoneError" style="display:none">❌ Telefon raqam mos emas!</p>
-                    </div>
-
-                    <button type="submit" class="apply__btn">Yuborish</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="contact">
-        <div class="hero__container">
-            <h2 class="gallery__title">kontaktlar</h2>
-
-            <div class="contact__row">
-                <div class="contact__col">
-                    <div class="contact__col-imgs">
-                        <img class="contact__col-img" src="./images/call.png" loading="lazy" decoding="async" width="15"
-                            height="15" alt="call">
-                    </div>
-                    <div class="contact__item">
-                        <p>Aloqa uchun:</p>
-                        <h3>+998 78 555 55 14</h3>
-                    </div>
-                </div>
-                <div class="contact__col">
-                    <img src="./images/telegram.png" loading="lazy" decoding="async" width="31" height="32"
-                        alt="telegram icon">
-                    <div class="contact__item">
-                        <p>Telegram:</p>
-                        <h3>@BibisoraAR</h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mapes">
-                <a class="mapes__link" href="https://yandex.ru/navi/org/12797818539?si=e98t6tvnwd25kuxbxvr0p9cx70"
-                    target="_blank" rel="noopener">
-                    <iframe class="mapes__frame" src="https://yandex.com/map-widget/v1/org/12797818539/" loading="lazy"
-                        allow="geolocation" title="Bizning manzilimiz Yandex Maps'da"></iframe>
-                </a>
-            </div>
-            <p class="contact__text">Manzilimiz Yandex Maps da*</p>
-        </div>
-    </section>
-
-    <section class="footer">
-        <div class="hero__container">
-            <img class="footer__logo" src="./images/logos.avif" loading="lazy" decoding="async" width="150" height="29"
-                alt="logo">
-            <p class="footer__text">Hoziroq Ariza qoldiring <br>
-                va <b>rad etib bo’lmaydigan</b> <br> imkoniyatlar bilan tanishing!</p>
-            <img class="footer__arrow" src="./images/arrows.png" loading="lazy" decoding="async" width="84" height="128"
-                alt="arrows">
-            <button class="hero__btn webinar-cta"
-                style="margin-bottom: 0; font-size: 18px; padding: 27px 0 27.5px 0; max-width: 300px; width: 100%;">Ariza
-                qoldirish
-            </button>
-
-            <img class="footer__images" src="./images/homeBig.avif" loading="lazy" decoding="async" width="349"
-                height="329" alt="homeBig">
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Modal -->
     <div id="registrationModal" class="homeModal" style="display: none">
