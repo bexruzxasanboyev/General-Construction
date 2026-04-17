@@ -56,8 +56,10 @@
                 </div>
 
 
-                <div class="gallery">
+                <!-- <div class="gallery">
                     <h2 class="gallery__title">Majmua rasmlari</h2>
+
+
 
                     <div class="gallery__viewport">
                         <div class="gallery__grid">
@@ -97,7 +99,7 @@
                             </svg>
                         </button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
 
@@ -113,10 +115,11 @@
                         <div class="apply__row">
                             <label class="apply__label" for="applyType">Qanday xonadon qidiryapsiz*</label>
                             <div class="apply__select">
-                                <select id="applyType" class="apply__input" name="type" required>
-                                    <option value="Yashash uchun" selected>Yashash uchun</option>
-                                    <option value="Investitsiya uchun">Investitsiya uchun</option>
-                                    <option value="Ijara uchun">Ijara uchun</option>
+                                <select id="applyType" class="apply__input" name="type">
+                                    <option value="" disabled selected hidden>Yashash uchun</option>
+                                    <option>Yashash uchun</option>
+                                    <option>Investitsiya uchun</option>
+                                    <option>Ijara uchun</option>
                                 </select>
                             </div>
                         </div>
@@ -124,11 +127,12 @@
                         <div class="apply__row">
                             <label class="apply__label" for="applyRooms">Necha xonalik bo'lsin*</label>
                             <div class="apply__select">
-                                <select id="applyRooms" class="apply__input" name="rooms" required>
-                                    <option value="1 xona">1 xona</option>
-                                    <option value="2 xona" selected>2 xona</option>
-                                    <option value="3 xona">3 xona</option>
-                                    <option value="4 xona">4 xona</option>
+                                <select id="applyRooms" class="apply__input" name="rooms">
+                                    <option value="" disabled selected hidden>2 xona</option>
+                                    <option>1 xona</option>
+                                    <option>2 xona</option>
+                                    <option>3 xona</option>
+                                    <option>4 xona</option>
                                 </select>
                             </div>
                         </div>
@@ -142,7 +146,7 @@
                         <div class="apply__row">
                             <label class="apply__label" for="applyName">Ismingiz <span>*</span></label>
                             <input id="applyName" class="apply__input" type="text" name="name"
-                                placeholder="Misol: Muxlisa" autocomplete="name" required>
+                                placeholder="Misol: Muxlisa" autocomplete="name">
                         </div>
 
                         <div class="apply__row">
@@ -159,7 +163,7 @@
                                 </button>
                                 <div class="apply__dropdown" id="applyDropdown" style="display:none"></div>
                                 <input id="applyPhone" class="apply__phone-input" type="tel" name="phone"
-                                    inputmode="numeric" placeholder="(00) 000-00-00" autocomplete="tel" required>
+                                    inputmode="numeric" placeholder="(00) 000-00-00" autocomplete="tel">
                             </div>
                             <p class="apply__error" id="applyPhoneError" style="display:none">❌ Telefon raqam mos emas!
                             </p>
@@ -212,6 +216,7 @@
             <div class="hero__container">
                 <img class="footer__logo" src="./images/logos.avif" loading="lazy" decoding="async" width="150"
                     height="29" alt="logo">
+
                 <p class="footer__text">Hoziroq Ariza qoldiring <br>
                     va <b>rad etib bo’lmaydigan</b> <br> imkoniyatlar bilan tanishing!</p>
                 <img class="footer__arrow" src="./images/arrows.png" loading="lazy" decoding="async" width="84"
