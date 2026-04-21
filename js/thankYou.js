@@ -14,10 +14,18 @@
  * Uysot API:
  *   POST https://service.app.uysot.uz/v1/external-source
  *   Header:  X-Auth: <token>
- *   Body:    { phoneNumber, name?, message?, email?, tagList? }
+ *   Body:    {
+ *     phoneNumber,           // required
+ *     name?,
+ *     message?,
+ *     email?,
+ *     tagList?,              // tag ro'yxati
+ *     customChannel?,        // routing kaliti — Afsona voronkasiga yo'naltiradi
+ *     utmData?               // UTM parametrlari (reklama manbaini aniqlash)
+ *   }
  *
- *   Voronka (Afsona) — TOKEN'ning o'zi orqali aniqlanadi (sub=73), URL'da voronka yo'q.
- *   Tag: #BalanceWebForm har bir lidga qo'shiladi.
+ *   Routing: customChannel="AfsonaWebformBALANCE" → Afsona voronkasi → Incoming Leads
+ *   Tag:     "AfsonaWebformBALANCE" har bir lidga qo'shiladi
  *
  * localStorage kalitlari:
  *   - "formData"      → Lead 1 (ism + telefon)
@@ -30,10 +38,11 @@
 // =================================================================
 const SHEETS_API_URL = "https://script.google.com/macros/s/AKfycbyK9CB_Hxsfn53C1QffBlg5HwalDJhwtYPs-wHd2Uj3Il5azQo1hWbvZVj7sHCgJpeDYg/exec";
 
-// UYSOT CRM — Afsona voronkasiga bog'langan token (sub=73, amalda tugamaydi)
+// UYSOT CRM
 const UYSOT_API_URL = "https://service.app.uysot.uz/v1/external-source";
 const UYSOT_TOKEN   = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDgiLCJleHAiOjcxMDIyNjkzNTZ9.dN7erklAbPFhCCpGkoyM17J6xHsjQzzeRwo2ajI19RA";
-const UYSOT_TAG     = "AfsonaWebformBALANCE"; // Har bir lidga tushadigan tag (# belgisisiz)
+const UYSOT_CHANNEL = "AfsonaWebformBALANCE"; // customChannel qiymati (routing kaliti)
+const UYSOT_TAG     = "AfsonaWebformBALANCE"; // Tag (# belgisisiz)
 
 
 // =================================================================
@@ -42,40 +51,51 @@ const UYSOT_TAG     = "AfsonaWebformBALANCE"; // Har bir lidga tushadigan tag (#
 
 /**
  * Telefon raqamni xalqaro formatga keltirish: +998XXXXXXXXX
- * Kirish misollari:
- *   "+998 90 123 45 67" → "+998901234567"
- *   "901234567"         → "+998901234567"
- *   "+90 555 123 45 67" → "+905551234567"
  */
 function normalizePhone(phone) {
     const s = String(phone || "").trim();
     if (!s) return "";
 
-    // Agar "+" bilan boshlansa — kodni saqlab, qolganidan faqat raqamlarni olamiz
     if (s.startsWith("+")) {
         const digits = s.slice(1).replace(/\D/g, "");
         return digits ? "+" + digits : "";
     }
 
-    // "+" yo'q — faqat raqamlarni yig'amiz
     const digits = s.replace(/\D/g, "");
     if (!digits) return "";
 
-    // 9 ta raqam — UZ ichki format (901234567)
     if (digits.length === 9) return "+998" + digits;
-    // 998 bilan boshlansa — + qo'shib qaytaramiz
     if (digits.length >= 12 && digits.startsWith("998")) return "+" + digits.slice(0, 12);
 
-    // Boshqa holat — o'zicha qaytaramiz
     return "+" + digits;
 }
 
-/**
- * Sahifada xato xabarini ko'rsatish (HTML'dagi #errorMessage elementi)
- */
 function showError() {
     const err = document.getElementById("errorMessage");
     if (err) err.style.display = "block";
+}
+
+/**
+ * URL'dan UTM parametrlarini olish
+ * Agar URL'da ?utm_source=facebook&utm_campaign=spring bo'lsa — shu ma'lumotni oladi
+ * Bo'lmasa — bo'sh qiymatlar qaytaradi (Uysot spec'iga mos)
+ */
+function getUtmData() {
+    try {
+        const url = new URL(window.location.href);
+        return {
+            utmSource:   url.searchParams.get("utm_source")   || "",
+            utmMedium:   url.searchParams.get("utm_medium")   || "",
+            utmCampaign: url.searchParams.get("utm_campaign") || "",
+            utmTerm:     url.searchParams.get("utm_term")     || "",
+            utmContent:  url.searchParams.get("utm_content")  || ""
+        };
+    } catch {
+        return {
+            utmSource: "", utmMedium: "", utmCampaign: "",
+            utmTerm: "",   utmContent: ""
+        };
+    }
 }
 
 
@@ -104,13 +124,18 @@ async function sendToSheets(sheetName, fields) {
 // UYSOT CRM — external-source endpoint
 // =================================================================
 async function sendToUysot(payload) {
-    // phoneNumber — majburiy. Agar yo'q bo'lsa, so'rov yubormaymiz
     if (!payload.phoneNumber) {
         throw new Error("Uysot: phoneNumber bo'sh");
     }
 
-    // Tag doimo qo'shiladi
-    payload.tagList = [UYSOT_TAG];
+    // Har bir so'rovga qo'shiladigan maydonlar:
+    payload.tagList = [UYSOT_TAG];          // tag
+    payload.customChannel = UYSOT_CHANNEL;  // routing kaliti (Afsona voronkasiga)
+
+    // utmData agar payload'da berilmagan bo'lsa — URL'dan olamiz
+    if (!payload.utmData) {
+        payload.utmData = getUtmData();
+    }
 
     const response = await fetch(UYSOT_API_URL, {
         method: "POST",
@@ -126,7 +151,6 @@ async function sendToUysot(payload) {
         throw new Error(`Uysot ${response.status}: ${errorText}`);
     }
 
-    // Ba'zan bo'sh body qaytarishi mumkin
     const text = await response.text();
     try {
         return text ? JSON.parse(text) : { ok: true };
@@ -146,7 +170,6 @@ async function sendLeadData() {
     const d = JSON.parse(raw);
     const phone = normalizePhone(d.TelefonRaqam);
 
-    // Parallel — bittasi yiqilsa, ikkinchisi baribir ishlaydi
     const [sheetsResult, uysotResult] = await Promise.allSettled([
         sendToSheets("Lead", {
             "Ism": d.Ism,
@@ -188,7 +211,6 @@ async function sendLead2Data() {
     const d = JSON.parse(raw);
     const phone = normalizePhone(d.TelefonRaqam);
 
-    // Barcha qo'shimcha ma'lumotni Uysot'dagi "message" maydoniga jamlaymiz
     const uysotMessage = [
         `Xonadon turi: ${d.XonadonTuri || "-"}`,
         `Xonalar soni: ${d.XonalarSoni || "-"}`,
