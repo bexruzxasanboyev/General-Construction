@@ -352,34 +352,9 @@
 
                 <div class="mapes">
                     <a class="mapes__link" href="https://yandex.ru/navi/org/12797818539?si=e98t6tvnwd25kuxbxvr0p9cx70" target="_blank" rel="noopener">
-                        <iframe class="mapes__frame" data-src="https://yandex.com/map-widget/v1/org/12797818539/" loading="lazy" allow="geolocation" title="Bizning manzilimiz Yandex Maps'da"></iframe>
+                        <iframe class="mapes__frame" src="https://yandex.com/map-widget/v1/org/12797818539/" loading="lazy" allow="geolocation" title="Bizning manzilimiz Yandex Maps'da"></iframe>
                     </a>
                 </div>
-                <script>
-                    (function() {
-                        var frame = document.querySelector('.mapes__frame[data-src]');
-                        if (!frame) return;
-                        var load = function() {
-                            frame.src = frame.dataset.src;
-                            frame.removeAttribute('data-src');
-                        };
-                        if ('IntersectionObserver' in window) {
-                            var io = new IntersectionObserver(function(entries) {
-                                entries.forEach(function(e) {
-                                    if (e.isIntersecting) {
-                                        load();
-                                        io.disconnect();
-                                    }
-                                });
-                            }, {
-                                rootMargin: '300px'
-                            });
-                            io.observe(frame);
-                        } else {
-                            load();
-                        }
-                    })();
-                </script>
                 <p class="contact__text">Manzilimiz Yandex Maps da*</p>
             </div>
         </section>
