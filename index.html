@@ -6,7 +6,174 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>General Construction</title>
     <style>
-     * { margin: 0; padding: 0; box-sizing: border-box; } html, body { overflow-x: hidden; } body { font-family: Montserrat, sans-serif; } .hero { padding-top: 16px; padding-bottom: 32px; } .hero__container { max-width: 385px; margin: 0 auto; padding: 0 10px; position: relative; } .hero__box { position: relative; } .hero__box::before { content: ''; position: absolute; top: 0; bottom: 69px; left: -10px; right: -10px; background-image: url(./images/bg.avif); background-repeat: no-repeat; background-size: cover; background-position: center; z-index: -1; pointer-events: none; } .hero__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; } .hero__logo { max-width: 125px; width: 100%; height: auto; } .hero__phone { display: flex; align-items: center; gap: 2px; text-decoration: none; } .hero__phone-number { font-weight: 500; font-size: 16px; line-height: 114%; text-align: center; text-transform: uppercase; color: black; } .hero__title { font-weight: 800; font-size: clamp(23px, 7.3vw, 28px); line-height: 120%; letter-spacing: -2%; text-align: center; text-transform: uppercase; margin-bottom: 16px; } .hero__info { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; } .hero__info-item { display: flex; align-items: center; gap: 8px; padding: 5px 0 5px 8px; background-color: #1B2E4A; border-radius: 5px; max-width: 333px; width: 100%; backdrop-filter: blur(10px); } .hero__info-icon { object-fit: cover; flex-shrink: 0; } .hero__info-text { font-family: Montserrat, sans-serif; font-weight: 400; font-size: 14px; line-height: 120%; color: white; } .hero__arrow { height: auto; width: 33px; margin: 0 auto; display: flex; margin-bottom: 5px; } .hero__image-wrap { position: relative; width: calc(100% + 20px); margin-left: -10px; margin-right: -10px; margin-top: -50px; margin-bottom: -38px; overflow: hidden; } .hero__image { max-width: none; width: 100%; height: auto; object-fit: cover; display: block; } .hero__btn { max-width: 330px; width: 100%; border: 1.52px solid #FFE7AB; box-shadow: 0px 3.05px 0px 0px #977843; border-radius: 15px; padding: 36px 0; background: linear-gradient(90deg, #FFCD7D 0%, #FFDDA5 54.33%, #FFCD7D 100%); margin: 0 auto; display: flex; align-items: center; position: relative; z-index: 2; cursor: pointer; justify-content: center; color: #664A0B; font-family: Montserrat, sans-serif; font-weight: 700; margin-bottom: 34px; font-size: 18px; line-height: 100%; letter-spacing: 2%; text-align: center; text-transform: uppercase; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html,
+        body {
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: Montserrat, sans-serif;
+        }
+        
+        .hero {
+            padding-top: 16px;
+            padding-bottom: 32px;
+        }
+        
+        .hero__container {
+            max-width: 385px;
+            margin: 0 auto;
+            padding: 0 10px;
+            position: relative;
+        }
+        
+        .hero__box {
+            position: relative;
+        }
+        
+        .hero__box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 69px;
+            left: -10px;
+            right: -10px;
+            background-image: url(./images/bg.avif);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .hero__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .hero__logo {
+            max-width: 125px;
+            width: 100%;
+            height: auto;
+        }
+        
+        .hero__phone {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            text-decoration: none;
+        }
+        
+        .hero__phone-number {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 114%;
+            text-align: center;
+            text-transform: uppercase;
+            color: black;
+        }
+        
+        .hero__title {
+            font-weight: 800;
+            font-size: clamp(23px, 7.3vw, 28px);
+            line-height: 120%;
+            letter-spacing: -2%;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        
+        .hero__info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .hero__info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 0 5px 8px;
+            background-color: #1B2E4A;
+            border-radius: 5px;
+            max-width: 333px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero__info-icon {
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .hero__info-text {
+            font-family: Montserrat, sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 120%;
+            color: white;
+        }
+        
+        .hero__arrow {
+            height: auto;
+            width: 33px;
+            margin: 0 auto;
+            display: flex;
+            margin-bottom: 5px;
+        }
+        
+        .hero__image-wrap {
+            position: relative;
+            width: calc(100% + 20px);
+            margin-left: -10px;
+            margin-right: -10px;
+            margin-top: -50px;
+            margin-bottom: -38px;
+            overflow: hidden;
+        }
+        
+        .hero__image {
+            max-width: none;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero__btn {
+            max-width: 330px;
+            width: 100%;
+            border: 1.52px solid #FFE7AB;
+            box-shadow: 0px 3.05px 0px 0px #977843;
+            border-radius: 15px;
+            padding: 36px 0;
+            background: linear-gradient(90deg, #FFCD7D 0%, #FFDDA5 54.33%, #FFCD7D 100%);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+            justify-content: center;
+            color: #664A0B;
+            font-family: Montserrat, sans-serif;
+            font-weight: 700;
+            margin-bottom: 34px;
+            font-size: 18px;
+            line-height: 100%;
+            letter-spacing: 2%;
+            text-align: center;
+            text-transform: uppercase;
+        }
     </style>
     <link rel="stylesheet" href="./css/main.css" media="print" onload="this.media='all'" />
     <noscript>
@@ -18,14 +185,13 @@
     <main>
         <section class="hero">
             <div class="hero__container">
+
                 <div class="hero__box">
                     <div class="hero__header">
-                        <img class="hero__logo" src="./images/logo.avif" loading="lazy" decoding="async" width="125"
-                            height="24" alt="logo">
+                        <img class="hero__logo" src="./images/logo.avif" loading="lazy" decoding="async" width="125" height="24" alt="logo">
 
                         <a class="hero__phone" href="tel:+998785555514">
-                            <img class="hero__phone-icon" src="./images/tel.png" loading="lazy" decoding="async"
-                                width="12" height="12" alt="tel">
+                            <img class="hero__phone-icon" src="./images/tel.png" loading="lazy" decoding="async" width="12" height="12" alt="tel">
                             <p class="hero__phone-number">+998 78 555 55 14</p>
                         </a>
                     </div>
@@ -34,22 +200,18 @@
 
                     <div class="hero__info">
                         <div class="hero__info-item">
-                            <img class="hero__info-icon" src="./images/home.png" loading="lazy" decoding="async"
-                                width="22" height="22" alt="home">
+                            <img class="hero__info-icon" src="./images/home.png" loading="lazy" decoding="async" width="22" height="22" alt="home">
                             <p class="hero__info-text"><b>Boshlang'ich to'lov:</b> 120.000.000 <br> so'mdan boshlab</p>
                         </div>
                         <div class="hero__info-item" style="max-width: 295px; width: 100%;">
-                            <img class="hero__info-icon" src="./images/calendar.png" loading="lazy" decoding="async"
-                                width="22" height="22" alt="home">
+                            <img class="hero__info-icon" src="./images/calendar.png" loading="lazy" decoding="async" width="22" height="22" alt="home">
                             <p class="hero__info-text"><b>Qolgan to'lov muddati:</b> 18 oygacha</p>
                         </div>
                     </div>
 
-                    <img class="hero__arrow" src="./images/arrow.png" loading="lazy" decoding="async" width="53"
-                        height="28" alt="arrow">
+                    <img class="hero__arrow" src="./images/arrow.png" loading="lazy" decoding="async" width="53" height="28" alt="arrow">
                     <div class="hero__image-wrap">
-                        <img class="hero__image" src="./images/mainImg.avif" loading="lazy" decoding="async" width="498"
-                            height="306" alt="mainImg">
+                        <img class="hero__image" src="./images/mainImg.avif" loading="lazy" decoding="async" width="498" height="306" alt="mainImg">
                     </div>
 
                     <button class="hero__btn webinar-cta">Menejer bilan bog’lanish</button>
@@ -63,20 +225,13 @@
 
                     <div class="gallery__viewport">
                         <div class="gallery__grid">
-                            <img class="gallery__image" src="./images/buldImg/1.avif" loading="lazy" decoding="async"
-                                width="355" height="221" alt="buldImg">
-                            <img class="gallery__image" src="./images/buldImg/2.avif" loading="lazy" decoding="async"
-                                width="355" height="221" alt="buldImg">
-                            <img class="gallery__image" src="./images/buldImg/3.avif" loading="lazy" decoding="async"
-                                width="355" height="221" alt="buldImg">
-                            <img class="gallery__image" src="./images/buldImg/4.avif" loading="lazy" decoding="async"
-                                width="355" height="221" alt="buldImg">
-                            <img class="gallery__image" src="./images/buldImg/5.avif" loading="lazy" decoding="async"
-                                width="355" height="221" alt="buldImg">
-                            <img class="gallery__image" src="./images/buldImg/6.avif" loading="lazy" decoding="async"
-                                width="355" height="221" alt="buldImg">
-                            <img class="gallery__image" src="./images/buldImg/7.avif" loading="lazy" decoding="async"
-                                width="355" height="221" alt="buldImg">
+                            <img class="gallery__image" src="./images/buldImg/1.avif" loading="lazy" decoding="async" width="355" height="221" alt="buldImg">
+                            <img class="gallery__image" src="./images/buldImg/2.avif" loading="lazy" decoding="async" width="355" height="221" alt="buldImg">
+                            <img class="gallery__image" src="./images/buldImg/3.avif" loading="lazy" decoding="async" width="355" height="221" alt="buldImg">
+                            <img class="gallery__image" src="./images/buldImg/4.avif" loading="lazy" decoding="async" width="355" height="221" alt="buldImg">
+                            <img class="gallery__image" src="./images/buldImg/5.avif" loading="lazy" decoding="async" width="355" height="221" alt="buldImg">
+                            <img class="gallery__image" src="./images/buldImg/6.avif" loading="lazy" decoding="async" width="355" height="221" alt="buldImg">
+                            <img class="gallery__image" src="./images/buldImg/7.avif" loading="lazy" decoding="async" width="355" height="221" alt="buldImg">
                         </div>
                         <div class="gallery__dots"></div>
                     </div>
@@ -108,8 +263,7 @@
             <div class="apply__container">
                 <div class="apply__card">
                     <h3 class="apply__title">Ariza qoldiring</h3>
-                    <p class="apply__desc">Siz uchun <b>Toshkent, Yunusobod tumani markazidan</b> 100% g'ishtdan
-                        qurilayotgan biznes klass xonadonlarni taklif qilamiz!</p>
+                    <p class="apply__desc">Siz uchun <b>Toshkent, Yunusobod tumani markazidan</b> 100% g'ishtdan qurilayotgan biznes klass xonadonlarni taklif qilamiz!</p>
 
                     <form class="apply__form" id="applyForm">
                         <div class="apply__row">
@@ -139,14 +293,12 @@
 
                         <div class="apply__row">
                             <label class="apply__label" for="applyAddress">Xozirgi yashash manzilingiz</label>
-                            <input id="applyAddress" class="apply__input" type="text" name="address"
-                                placeholder="Misol: Toshkent shahri, C1" autocomplete="street-address">
+                            <input id="applyAddress" class="apply__input" type="text" name="address" placeholder="Misol: Toshkent shahri, C1" autocomplete="street-address">
                         </div>
 
                         <div class="apply__row">
                             <label class="apply__label" for="applyName">Ismingiz <span>*</span></label>
-                            <input id="applyName" class="apply__input" type="text" name="name"
-                                placeholder="Misol: Muxlisa" autocomplete="name">
+                            <input id="applyName" class="apply__input" type="text" name="name" placeholder="Misol: Muxlisa" autocomplete="name">
                         </div>
 
                         <div class="apply__row">
@@ -162,8 +314,7 @@
                                     <span class="apply__code" id="applyCode">+998</span>
                                 </button>
                                 <div class="apply__dropdown" id="applyDropdown" style="display:none"></div>
-                                <input id="applyPhone" class="apply__phone-input" type="tel" name="phone"
-                                    inputmode="numeric" placeholder="(00) 000-00-00" autocomplete="tel">
+                                <input id="applyPhone" class="apply__phone-input" type="tel" name="phone" inputmode="numeric" placeholder="(00) 000-00-00" autocomplete="tel">
                             </div>
                             <p class="apply__error" id="applyPhoneError" style="display:none">❌ Telefon raqam mos emas!
                             </p>
@@ -183,8 +334,7 @@
                 <div class="contact__row">
                     <div class="contact__col">
                         <div class="contact__col-imgs">
-                            <img class="contact__col-img" src="./images/call.png" loading="lazy" decoding="async"
-                                width="15" height="15" alt="call">
+                            <img class="contact__col-img" src="./images/call.png" loading="lazy" decoding="async" width="15" height="15" alt="call">
                         </div>
                         <div class="contact__item">
                             <p>Aloqa uchun:</p>
@@ -192,8 +342,7 @@
                         </div>
                     </div>
                     <div class="contact__col">
-                        <img src="./images/telegram.png" loading="lazy" decoding="async" width="31" height="32"
-                            alt="telegram icon">
+                        <img src="./images/telegram.png" loading="lazy" decoding="async" width="31" height="32" alt="telegram icon">
                         <div class="contact__item">
                             <p>Telegram:</p>
                             <h3>@BibisoraAR</h3>
@@ -202,32 +351,50 @@
                 </div>
 
                 <div class="mapes">
-                    <a class="mapes__link" href="https://yandex.ru/navi/org/12797818539?si=e98t6tvnwd25kuxbxvr0p9cx70"
-                        target="_blank" rel="noopener">
-                        <iframe class="mapes__frame" src="https://yandex.com/map-widget/v1/org/12797818539/"
-                            loading="lazy" allow="geolocation" title="Bizning manzilimiz Yandex Maps'da"></iframe>
+                    <a class="mapes__link" href="https://yandex.ru/navi/org/12797818539?si=e98t6tvnwd25kuxbxvr0p9cx70" target="_blank" rel="noopener">
+                        <iframe class="mapes__frame" data-src="https://yandex.com/map-widget/v1/org/12797818539/" loading="lazy" allow="geolocation" title="Bizning manzilimiz Yandex Maps'da"></iframe>
                     </a>
                 </div>
+                <script>
+                    (function() {
+                        var frame = document.querySelector('.mapes__frame[data-src]');
+                        if (!frame) return;
+                        var load = function() {
+                            frame.src = frame.dataset.src;
+                            frame.removeAttribute('data-src');
+                        };
+                        if ('IntersectionObserver' in window) {
+                            var io = new IntersectionObserver(function(entries) {
+                                entries.forEach(function(e) {
+                                    if (e.isIntersecting) {
+                                        load();
+                                        io.disconnect();
+                                    }
+                                });
+                            }, {
+                                rootMargin: '300px'
+                            });
+                            io.observe(frame);
+                        } else {
+                            load();
+                        }
+                    })();
+                </script>
                 <p class="contact__text">Manzilimiz Yandex Maps da*</p>
             </div>
         </section>
 
         <section class="footer">
             <div class="hero__container">
-                <img class="footer__logo" src="./images/logos.avif" loading="lazy" decoding="async" width="150"
-                    height="29" alt="logo">
+                <img class="footer__logo" src="./images/logos.avif" loading="lazy" decoding="async" width="150" height="29" alt="logo">
 
-                <p class="footer__text">Hoziroq Ariza qoldiring <br>
-                    va <b>rad etib bo’lmaydigan</b> <br> imkoniyatlar bilan tanishing!</p>
-                <img class="footer__arrow" src="./images/arrows.png" loading="lazy" decoding="async" width="84"
-                    height="128" alt="arrows">
-                <button class="hero__btn webinar-cta"
-                    style="margin-bottom: 0; font-size: 18px; padding: 27px 0 27.5px 0; max-width: 300px; width: 100%;">Ariza
+                <p class="footer__text">Hoziroq Ariza qoldiring <br> va <b>rad etib bo’lmaydigan</b> <br> imkoniyatlar bilan tanishing!</p>
+                <img class="footer__arrow" src="./images/arrows.png" loading="lazy" decoding="async" width="84" height="128" alt="arrows">
+                <button class="hero__btn webinar-cta" style="margin-bottom: 0; font-size: 18px; padding: 27px 0 27.5px 0; max-width: 300px; width: 100%;">Ariza
                     qoldirish
                 </button>
 
-                <img class="footer__images" src="./images/homeBig.avif" loading="lazy" decoding="async" width="349"
-                    height="329" alt="homeBig">
+                <img class="footer__images" src="./images/homeBig.avif" loading="lazy" decoding="async" width="349" height="329" alt="homeBig">
             </div>
         </section>
     </main>
@@ -251,8 +418,7 @@
                 <!-- ISM -->
                 <div class="HomeFormRow">
                     <label class="HomeFormRowLabel" for="name">Ismingiz:</label>
-                    <input class="HomeFormRowInput" type="text" id="name" name="name" placeholder="Ismingizni kiriting"
-                        autocomplete="name" />
+                    <input class="HomeFormRowInput" type="text" id="name" name="name" placeholder="Ismingizni kiriting" autocomplete="name" />
                     <p class="homeFormErrorText" id="nameError" style="display: none">
                         ❌ Ismingizni kiriting!
                     </p>
@@ -280,9 +446,7 @@
 
                         <!-- RIGHT: phone input (number span inside) -->
                         <div class="phone-field">
-                            <input class="HomeFormRowInput phone-input" type="tel" id="phone" name="phone"
-                                inputmode="numeric" placeholder="88 888 88 88" autocomplete="tel"
-                                style="border: none; background-color: transparent;padding-left: 5px;" />
+                            <input class="HomeFormRowInput phone-input" type="tel" id="phone" name="phone" inputmode="numeric" placeholder="88 888 88 88" autocomplete="tel" style="border: none; background-color: transparent;padding-left: 5px;" />
                         </div>
                     </div>
 
@@ -302,6 +466,33 @@
 
     <script defer src="/js/phoneFormatter.js"></script>
     <script defer src="/js/app.js"></script>
+    <!-- Meta Pixel Code -->
+    <script defer>
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '965610595868560');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=965610595868560&ev=PageView&noscript=1"
+/></noscript>
+    <!-- End Meta Pixel Code -->
 </body>
 
 </html>
