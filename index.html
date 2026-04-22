@@ -5,6 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>General Construction</title>
+
+    <link rel="preload" as="image" href="./images/bg.avif" fetchpriority="high">
+    <link rel="preload" as="image" href="./images/mainImg.avif" fetchpriority="high">
+
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+    <link rel="preconnect" href="https://yandex.com" crossorigin>
+    <link rel="dns-prefetch" href="https://yastatic.net">
+    <link rel="dns-prefetch" href="https://mc.yandex.ru">
+
     <style>
         * {
             margin: 0;
@@ -188,10 +197,10 @@
 
                 <div class="hero__box">
                     <div class="hero__header">
-                        <img class="hero__logo" src="./images/logo.avif" loading="lazy" decoding="async" width="125" height="24" alt="logo">
+                        <img class="hero__logo" src="./images/logo.avif" decoding="async" fetchpriority="high" width="125" height="24" alt="logo">
 
                         <a class="hero__phone" href="tel:+998785555514">
-                            <img class="hero__phone-icon" src="./images/tel.png" loading="lazy" decoding="async" width="12" height="12" alt="tel">
+                            <img class="hero__phone-icon" src="./images/tel.png" decoding="async" width="12" height="12" alt="tel">
                             <p class="hero__phone-number">+998 78 555 55 14</p>
                         </a>
                     </div>
@@ -200,18 +209,18 @@
 
                     <div class="hero__info">
                         <div class="hero__info-item">
-                            <img class="hero__info-icon" src="./images/home.png" loading="lazy" decoding="async" width="22" height="22" alt="home">
+                            <img class="hero__info-icon" src="./images/home.png" decoding="async" width="22" height="22" alt="home">
                             <p class="hero__info-text"><b>Boshlang'ich to'lov:</b> 120.000.000 <br> so'mdan boshlab</p>
                         </div>
                         <div class="hero__info-item" style="max-width: 295px; width: 100%;">
-                            <img class="hero__info-icon" src="./images/calendar.png" loading="lazy" decoding="async" width="22" height="22" alt="home">
+                            <img class="hero__info-icon" src="./images/calendar.png" decoding="async" width="22" height="22" alt="home">
                             <p class="hero__info-text"><b>Qolgan to'lov muddati:</b> 18 oygacha</p>
                         </div>
                     </div>
 
-                    <img class="hero__arrow" src="./images/arrow.png" loading="lazy" decoding="async" width="53" height="28" alt="arrow">
+                    <img class="hero__arrow" src="./images/arrow.png" decoding="async" width="53" height="28" alt="arrow">
                     <div class="hero__image-wrap">
-                        <img class="hero__image" src="./images/mainImg.avif" loading="lazy" decoding="async" width="498" height="306" alt="mainImg">
+                        <img class="hero__image" src="./images/mainImg.avif" decoding="async" fetchpriority="high" width="498" height="306" alt="mainImg">
                     </div>
 
                     <button class="hero__btn webinar-cta">Menejer bilan bog’lanish</button>
@@ -352,7 +361,7 @@
 
                 <div class="mapes">
                     <a class="mapes__link" href="https://yandex.ru/navi/org/12797818539?si=e98t6tvnwd25kuxbxvr0p9cx70" target="_blank" rel="noopener">
-                        <iframe class="mapes__frame" src="https://yandex.com/map-widget/v1/org/12797818539/" loading="lazy" allow="geolocation" title="Bizning manzilimiz Yandex Maps'da"></iframe>
+                        <div class="mapes__frame" id="mapesFrame" data-src="https://yandex.com/map-widget/v1/org/12797818539/" role="img" aria-label="Bizning manzilimiz Yandex Maps'da"></div>
                     </a>
                 </div>
                 <p class="contact__text">Manzilimiz Yandex Maps da*</p>
@@ -441,33 +450,75 @@
 
     <script defer src="/js/phoneFormatter.js"></script>
     <script defer src="/js/app.js"></script>
-    <!-- Meta Pixel Code -->
-    <script defer>
-        ! function(f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function() {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+
+    <script>
+        (function() {
+            var el = document.getElementById('mapesFrame');
+            if (!el) return;
+            var mount = function() {
+                if (el.dataset.mounted) return;
+                el.dataset.mounted = '1';
+                var iframe = document.createElement('iframe');
+                iframe.src = el.dataset.src;
+                iframe.loading = 'lazy';
+                iframe.allow = 'geolocation';
+                iframe.title = 'Bizning manzilimiz Yandex Maps\'da';
+                iframe.style.cssText = 'width:100%;height:100%;border:0;display:block';
+                el.appendChild(iframe);
             };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '965610595868560');
-        fbq('track', 'PageView');
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) {
+                            mount();
+                            io.disconnect();
+                        }
+                    });
+                }, { rootMargin: '200px 0px' });
+                io.observe(el);
+            } else {
+                window.addEventListener('load', mount);
+            }
+        })();
+    </script>
+
+    <script>
+        (function() {
+            var loaded = false;
+            var loadPixel = function() {
+                if (loaded) return;
+                loaded = true;
+                ! function(f, b, e, v, n, t, s) {
+                    if (f.fbq) return;
+                    n = f.fbq = function() {
+                        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    };
+                    if (!f._fbq) f._fbq = n;
+                    n.push = n;
+                    n.loaded = !0;
+                    n.version = '2.0';
+                    n.queue = [];
+                    t = b.createElement(e);
+                    t.async = !0;
+                    t.src = v;
+                    s = b.getElementsByTagName(e)[0];
+                    s.parentNode.insertBefore(t, s)
+                }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init', '965610595868560');
+                fbq('track', 'PageView');
+            };
+            var events = ['scroll', 'pointerdown', 'keydown', 'touchstart'];
+            var trigger = function() {
+                events.forEach(function(ev) { window.removeEventListener(ev, trigger, { passive: true }); });
+                loadPixel();
+            };
+            events.forEach(function(ev) { window.addEventListener(ev, trigger, { passive: true, once: true }); });
+            setTimeout(loadPixel, 6000);
+        })();
     </script>
     <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=965610595868560&ev=PageView&noscript=1"
 /></noscript>
-    <!-- End Meta Pixel Code -->
 </body>
 
 </html>
